@@ -3,3 +3,4 @@
   connection: local
   roles:
     - directory_structure
+    - dotfiles
