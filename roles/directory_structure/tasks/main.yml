@@ -1,0 +1,8 @@
+- name: make directory
+  file:
+    path: ~/{{ item }}
+    state: directory
+  loop:
+    - code
+    - downloads
+    - documents

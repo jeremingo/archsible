@@ -1,0 +1,5 @@
+- name: set up arch workstation
+  hosts: localhost
+  connection: local
+  roles:
+    - directory_structure
