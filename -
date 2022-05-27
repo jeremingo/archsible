@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-for i in $*;
-do
-  params=" $params $d/$i"
-done
-
-git -c "credential.helper='store'" $params
