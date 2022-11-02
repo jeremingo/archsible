@@ -1,0 +1,11 @@
+- name: clone repo
+  git:
+    repo: https://github.com/jeremingo/{{ item }}.git
+    dest: ~/code/suckless/{{ item }}
+
+- name: add .gitconfig file to local config
+  git_config:
+    name: include.path
+    repo: ~/code/suckless/{{ item }}
+    scope: local
+    value: ../.gitconfig
