@@ -1,0 +1,9 @@
+- name: create directory
+  file:
+    path: ~/code/suckless
+    state: directory
+
+- name: install and config
+  include_tasks: suckless-software.yml
+  loop:
+    - dwm
