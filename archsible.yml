@@ -4,3 +4,4 @@
   roles:
     - directory_structure
     - dotfiles
+    - suckless
