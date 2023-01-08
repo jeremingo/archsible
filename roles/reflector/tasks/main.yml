@@ -1,0 +1,10 @@
+- name: install reflector
+  pacman:
+    name: reflector
+  become: yes
+
+- name: copy reflector.conf file
+  copy:
+    src: reflector.conf
+    dest: /etc/xdg/reflector/
+  become: yes
