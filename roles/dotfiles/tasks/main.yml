@@ -25,6 +25,7 @@
     dest: ~/dotfiles
     executable: "{{ '' if credential_helper.config_value != '' else '~/git-with-credential-helper.sh' }}"
     track_submodules: yes
+    update: no
 
 - name: remove credential helper script
   file:
