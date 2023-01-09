@@ -2,8 +2,8 @@
 
 jeremingo's automatic arch linux work-station deployer, implemented with ansible.
 
-installs [my dotfiles](https://github.com/jeremningo/dotfiles), forks of suckless software
-([dwm](https://github.com/jeremningo/dwm), [st](https://github.com/jeremningo/st)),
+installs [my dotfiles](https://github.com/jeremingo/dotfiles), forks of suckless software
+([dwm](https://github.com/jeremingo/dwm), [st](https://github.com/jeremingo/st)),
 and other configurations.
 
 for more info, check out the README.md files under each [role](roles).

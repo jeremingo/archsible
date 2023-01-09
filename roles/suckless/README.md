@@ -4,8 +4,8 @@ installs depenedncies, clones and configures my suckless software forks, under *
 
 ### list of forks
 
-- [dwm](https://github.com/jeremningo/dwm)
-- [st](https://github.com/jeremningo/st)
+- [dwm](https://github.com/jeremingo/dwm)
+- [st](https://github.com/jeremingo/st)
 
 ## installation of dependencies
 
