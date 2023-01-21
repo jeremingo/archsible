@@ -10,5 +10,4 @@
 
 - name: install and config
   include_tasks: suckless-software.yml
-  loop:
-    - dwm
+  loop: "{{ suckless_software }}"

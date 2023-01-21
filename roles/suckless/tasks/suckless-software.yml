@@ -1,11 +1,18 @@
 - name: clone repo
   git:
-    repo: https://github.com/jeremingo/{{ item }}.git
-    dest: ~/code/suckless/{{ item }}
+    repo: https://github.com/jeremingo/{{ item.name }}.git
+    dest: ~/code/suckless/{{ item.name }}
 
-- name: add .gitconfig file to local config
+- name: configure upstream url
   git_config:
-    name: include.path
-    repo: ~/code/suckless/{{ item }}
+    name: remote.upstream.url
+    repo: ~/code/suckless/{{ item.name }}
     scope: local
-    value: ../.gitconfig
+    value: "{{ item.upstream_url }}"
+
+- name: configure upstream fetch
+  git_config:
+    name: remote.upstream.fetch
+    repo: ~/code/suckless/{{ item.name }}
+    scope: local
+    value: +refs/heads/*:refs/remotes/upstream/*
