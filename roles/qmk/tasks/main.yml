@@ -1,0 +1,26 @@
+- name: install qmk
+  pacman:
+    name: qmk
+  become: yes
+
+- name: run qmk setup
+  expect:
+    command: qmk setup -H ./qmk_firmware jeremingo/qmk_firmware
+    chdir: ~/code
+    creates: ~/code/qmk_firmware
+    responses:
+      "Would you like to clone .*": y
+      'Would you like to set .*': y
+    timeout: 180
+
+- name: check qmk configuration for default keymap
+  command: qmk config
+  changed_when: false
+  register: qmk_config
+
+- name: set jeremingo to default keymap
+  lineinfile:
+    path: ~/.config/qmk/qmk.ini
+    line: user.keymap = jeremingo
+    insertafter: '\[user\]'
+  when: "'user.keymap=jeremingo' not in  qmk_config.stdout"
