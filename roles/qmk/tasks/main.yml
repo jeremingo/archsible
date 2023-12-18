@@ -3,24 +3,47 @@
     name: qmk
   become: yes
 
-- name: run qmk setup
-  expect:
-    command: qmk setup -H ./qmk_firmware jeremingo/qmk_firmware
+- name: clone qmk firmware
+  command:
+    cmd: 'git clone https://github.com/jeremingo/qmk_firmware --no-checkout --depth 1'
     chdir: ~/code
     creates: ~/code/qmk_firmware
-    responses:
-      "Would you like to clone .*": y
-      'Would you like to set .*': y
-    timeout: 180
 
-- name: check qmk configuration for default keymap
-  command: qmk config
-  changed_when: false
-  register: qmk_config
+- name: config sparse checkout
+  git_config:
+    name: core.sparseCheckout
+    repo: ~/code/qmk_firmware
+    scope: local
+    value: true
 
-- name: set jeremingo to default keymap
-  lineinfile:
-    path: ~/.config/qmk/qmk.ini
-    line: user.keymap = jeremingo
-    insertafter: '\[user\]'
-  when: "'user.keymap=jeremingo' not in  qmk_config.stdout"
+- name: add sparse-checkout file
+  copy:
+    src: sparse-checkout
+    dest: ~/code/qmk_firmware/.git/info/sparse-checkout
+
+- name: checkout repository
+  command:
+    cmd: 'git checkout'
+    chdir: ~/code/qmk_firmware
+    creates: ~/code/qmk_firmware/.gitignore
+
+- name: configure upstream url
+  git_config:
+    name: remote.upstream.url
+    repo: ~/code/qmk_firmware
+    scope: local
+    value: https://github.com/qmk/qmk_firmware
+
+- name: update submodules
+  command:
+    cmd: 'git submodule update --init --depth 1'
+    chdir: ~/code/qmk_firmware
+  register: git_submodule_update_output
+  changed_when: git_submodule_update_output.stdout != ''
+      
+- name: set qmk home in config
+  command:
+    cmd: 'qmk config {{ item.key }}={{ item.value }}'
+  register: qmk_config_output
+  changed_when: item.value + ' -> ' + item.value not in qmk_config_output.stdout
+  loop: '{{ qmk_config | dict2items }}'

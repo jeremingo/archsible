@@ -1,0 +1,9 @@
+/*
+!keyboards/*
+keyboards/planck/*
+keyboards/kbdfans/niu_mini/*
+!.github/*
+!.vscode/*
+!docs/*
+!users/*
+users/jeremingo/*
