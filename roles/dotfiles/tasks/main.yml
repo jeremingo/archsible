@@ -1,36 +1,14 @@
 - name: install packages
   pacman:
-    name: '{{ item }}'
+    name: stow
   become: yes
-  loop:
-    - git
-    - stow
-
-- name: check config
-  git_config:
-    name: credential.helper
-    scope: global
-  register: credential_helper
-
-- name: add executable with credential helper set
-  copy:
-    src: git-with-credential-helper.sh
-    dest: ~/git-with-credential-helper.sh
-    mode: u+x
-  when: credential_helper.config_value == ''
 
 - name: clone repo
   git:
     repo: https://github.com/jeremingo/dotfiles.git
     dest: ~/dotfiles
-    executable: "{{ '' if credential_helper.config_value != '' else '~/git-with-credential-helper.sh' }}"
     track_submodules: yes
     update: no
-
-- name: remove credential helper script
-  file:
-    path: ~/git-with-credential-helper.sh
-    state: absent
 
 - name: find dotfiles directories
   find:
