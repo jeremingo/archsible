@@ -1,0 +1,13 @@
+- name: install packages for atari development
+  pacman:
+    name: '{{ item }}'
+  become: yes
+  loop:
+    - dasm
+    - stella
+
+- name: clone atari-playground repository
+  git:
+    repo: git@github.com:jeremingo/atari-playground.git
+    dest: ~/code/atari-playground
+
