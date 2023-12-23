@@ -5,7 +5,7 @@
 
 - name: clone repo
   git:
-    repo: https://github.com/jeremingo/dotfiles.git
+    repo: git@github.com:jeremingo/dotfiles.git
     dest: ~/dotfiles
     track_submodules: yes
     update: no
