@@ -1,6 +1,6 @@
 - name: clone repo
   git:
-    repo: https://github.com/jeremingo/{{ item.name }}.git
+    repo: git@github.com:jeremingo/{{ item.name }}.git
     dest: ~/code/suckless/{{ item.name }}
 
 - name: configure upstream url
