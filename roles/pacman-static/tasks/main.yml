@@ -1,0 +1,8 @@
+- name: install pacman-static binary
+  get_url:
+    url: https://pkgbuild.com/~morganamilo/pacman-static/x86_64/bin/pacman-static
+    dest: /usr/bin/pacman-static
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  become: yes
