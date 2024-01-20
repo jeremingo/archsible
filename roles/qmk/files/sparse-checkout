@@ -2,6 +2,7 @@
 !keyboards/*
 keyboards/planck/*
 keyboards/kbdfans/niu_mini/*
+keyboards/keyhive/uno/*
 !.github/*
 !.vscode/*
 !docs/*
