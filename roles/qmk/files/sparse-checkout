@@ -6,5 +6,3 @@ keyboards/keyhive/uno/*
 !.github/*
 !.vscode/*
 !docs/*
-!users/*
-users/jeremingo/*
