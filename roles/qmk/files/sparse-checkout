@@ -1,8 +1,12 @@
 /*
+!.github/*
+!.vscode/*
+!docs/*
+
 !keyboards/*
 keyboards/planck/*
 keyboards/kbdfans/niu_mini/*
 keyboards/keyhive/uno/*
-!.github/*
-!.vscode/*
-!docs/*
+
+!layouts/*
+layouts/*/ortho_4x12/*
