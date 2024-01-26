@@ -5,7 +5,7 @@
 
 - name: clone qmk firmware
   command:
-    cmd: 'git clone https://github.com/jeremingo/qmk_firmware --no-checkout --depth 1'
+    cmd: 'git clone -b jeremingo git@github.com:jeremingo/qmk_firmware.git --no-checkout --depth 1'
     chdir: ~/code
     creates: ~/code/qmk_firmware
 
