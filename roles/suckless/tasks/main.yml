@@ -3,10 +3,13 @@
     path: ~/code/suckless
     state: directory
 
-- name: install hack font
+- name: install fonts
   pacman:
-    name: ttf-hack
+    name: "{{ item }}"
   become: yes
+  loop:
+    - ttf-hack
+    - ttf-font-awesome
 
 - name: install and config
   include_tasks: suckless-software.yml
