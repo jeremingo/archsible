@@ -4,6 +4,7 @@
   roles:
     - directory_structure
     - dotfiles
+    - network_manager
     - suckless
     - reflector
     - qmk

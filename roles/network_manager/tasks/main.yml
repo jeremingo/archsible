@@ -1,0 +1,5 @@
+- name: enable network manager
+  systemd:
+    name: NetworkManager.service
+    enabled: yes
+  become: yes
