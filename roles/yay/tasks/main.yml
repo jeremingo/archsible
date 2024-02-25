@@ -1,0 +1,21 @@
+- name: create the 'aur_builder' user
+  user:
+    name: aur_builder
+    group: wheel
+  become: yes
+
+- name: allow aur_builder to run sudo pacman without a password
+  lineinfile:
+    path: /etc/sudoers.d/aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: u=rw,g=r,o=r
+    validate: 'visudo -cf %s'
+  become: yes
+
+- name: install yay
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+  become: yes
+  become_user: aur_builder

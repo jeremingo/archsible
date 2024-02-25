@@ -3,6 +3,7 @@
   connection: local
   roles:
     - directory_structure
+    - yay
     - dotfiles
     - network_manager
     - suckless
