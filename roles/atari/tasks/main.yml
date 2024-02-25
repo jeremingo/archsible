@@ -1,10 +1,11 @@
-- name: install packages for atari development
+- name: install stella
   pacman:
-    name: '{{ item }}'
+    name: stella
   become: yes
-  loop:
-    - dasm
-    - stella
+
+- name: install dasm
+  kewlfft.aur.aur:
+    name: dasm
 
 - name: clone atari-playground repository
   git:
