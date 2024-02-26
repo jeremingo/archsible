@@ -1,0 +1,7 @@
+- name: install audio packages
+  pacman:
+    name: '{{ item }}'
+  become: yes
+  loop:
+    - pipewire
+    - pipewire-pulse
