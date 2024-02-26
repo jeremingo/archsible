@@ -3,7 +3,7 @@
   connection: local
   roles:
     - directory_structure
-    - yay
+    - package_managers
     - dotfiles
     - audio
     - network_manager
