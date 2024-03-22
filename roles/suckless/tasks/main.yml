@@ -9,7 +9,7 @@
   become: yes
   loop:
     - ttf-hack
-    - ttf-font-awesome
+    - ttf-nerd-fonts-symbols-mono
 
 - name: install and config
   include_tasks: suckless-software.yml
