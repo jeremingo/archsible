@@ -1,0 +1,3 @@
+- name: install vim-instant-markdown aur package
+  kewlfft.aur.aur:
+    name: vim-instant-markdown

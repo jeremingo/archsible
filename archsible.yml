@@ -9,6 +9,7 @@
     - network_manager
     - suckless
     - reflector
+    - vim-instant-markdown
     - qmk
     - atari
     - pacman-static
