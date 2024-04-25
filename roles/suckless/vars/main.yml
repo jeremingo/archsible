@@ -5,3 +5,5 @@ suckless_software:
     upstream_url: https://github.com/UtkarshVerma/dwmblocks-async.git
   - name: st
     upstream_url: git://git.suckless.org/st
+  - name: dmenu
+    upstream_url: git://git.suckless.org/dmenu
