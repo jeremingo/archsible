@@ -2,6 +2,10 @@
   git:
     repo: git@github.com:jeremingo/{{ item.name }}.git
     dest: ~/code/suckless/{{ item.name }}
+  register: repo_clone
+  failed_when:
+    - repo_clone.failed
+    - not 'Local modifications exist in the destination' in repo_clone.msg
 
 - name: configure upstream url
   git_config:
