@@ -5,7 +5,7 @@
 
 - name: install dasm
   kewlfft.aur.aur:
-    name: dasm
+    name: dasm-git
 
 - name: clone atari-playground repository
   git:
