@@ -5,7 +5,7 @@
     - directory_structure
     - package_managers
     - dotfiles
-    - audio
+    - packages
     - network_manager
     - suckless
     - reflector

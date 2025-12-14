@@ -1,4 +1,4 @@
-- name: install audio packages
+- name: more package installations
   pacman:
     name: '{{ item }}'
   become: yes
