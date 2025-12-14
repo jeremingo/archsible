@@ -5,3 +5,6 @@
   loop:
     - pipewire
     - pipewire-pulse
+
+    - zathura
+    - zathura-pdf-mupdf
