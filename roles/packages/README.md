@@ -7,3 +7,6 @@
 - zathura pdf viewer
     - zathura
     - zathura-pdf-mupdf
+
+- image viewer
+    - feh
