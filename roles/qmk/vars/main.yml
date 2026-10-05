@@ -1,3 +1,4 @@
 qmk_config:
-  user.qmk_home: /home/jeremingo/code/qmk_firmware
+  user.qmk_home: /home/jeremingo/code/qmk/firmware
+  user.overlay_dir: /home/jeremingo/code/qmk/userspace
   user.keymap: jeremingo

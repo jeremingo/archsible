@@ -4,46 +4,24 @@
   become: yes
 
 - name: clone qmk firmware
-  command:
-    cmd: 'git clone -b jeremingo git@github.com:jeremingo/qmk_firmware.git --no-checkout --depth 1'
-    chdir: ~/code
-    creates: ~/code/qmk_firmware
+  git:
+    repo: https://github.com/qmk/qmk_firmware.git
+    dest: ~/code/qmk/firmware
 
-- name: config sparse checkout
-  git_config:
-    name: core.sparseCheckout
-    repo: ~/code/qmk_firmware
-    scope: local
-    value: true
+- name: clone qmk userspace
+  git:
+    repo: git@github.com:jeremingo/qmk_userspace.git
+    dest: ~/code/qmk/userspace
 
-- name: add sparse-checkout file
-  copy:
-    src: sparse-checkout
-    dest: ~/code/qmk_firmware/.git/info/sparse-checkout
-
-- name: checkout repository
-  command:
-    cmd: 'git checkout'
-    chdir: ~/code/qmk_firmware
-    creates: ~/code/qmk_firmware/.gitignore
-
-- name: configure upstream url
-  git_config:
-    name: remote.upstream.url
-    repo: ~/code/qmk_firmware
-    scope: local
-    value: https://github.com/qmk/qmk_firmware
-
-- name: update submodules
-  command:
-    cmd: 'git submodule update --init --depth 1'
-    chdir: ~/code/qmk_firmware
-  register: git_submodule_update_output
-  changed_when: git_submodule_update_output.stdout != ''
-      
 - name: set qmk home in config
   command:
     cmd: 'qmk config {{ item.key }}={{ item.value }}'
   register: qmk_config_output
   changed_when: item.value + ' -> ' + item.value not in qmk_config_output.stdout
   loop: '{{ qmk_config | dict2items }}'
+
+- name: link userspace keyboards into firmware
+  file:
+    src: '{{ ansible_env.HOME }}/code/qmk/userspace/keyboards/jeremingo'
+    dest: '{{ ansible_env.HOME }}/code/qmk/firmware/keyboards/jeremingo'
+    state: link
